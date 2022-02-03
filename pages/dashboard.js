@@ -66,15 +66,15 @@ export default function Dashboad(){
     if(loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets created</h1>)
     return(
         <div>
-        <div className="flex justify-center">
+        <div className="">
           <div className="p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+            <div className="columns-4 gap-4 space-y-4 pb-32">
               {
                 nfts.map((nft, i) => (
-                  <div key={i} className="border shadow rounded-xl overflow-hidden">
+                  <div key={i} className="shadow rounded-xl overflow-hidden break-inside-avoid">
                     <img src={nft.image} className="rounded" />
                     <div className="p-4 bg-black">
-                      <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+                      <p className="text-xl font-bold text-white">{nft.price} MATIC</p>
                     </div>
                   </div>
                 ))
@@ -89,10 +89,10 @@ export default function Dashboad(){
           <h2>Items Sold</h2>
           <div className="flex justify-center">
             <div className="p-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+              <div className="columns-4 gap-4 space-y-4 pb-32">
                 {
                   sold.map((nft, i) => (
-                    <div key={i} className="border shadow rounded-xl overflow-hidden">
+                    <div key={i} className="shadow rounded-xl overflow-hidden break-inside-avoid">
                       <img src={nft.image} className="rounded" />
                       <div className="p-4 bg-black">
                         <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
