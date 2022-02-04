@@ -66,15 +66,22 @@ export default function Dashboad(){
     if(loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets created</h1>)
     return(
         <div>
+          <div class="mb-10 text-2xl flex font-light justify-center">
+            <span class="font-mono bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+              dashboard
+            </span>
+          </div>
         <div className="">
+        
           <div className="p-4">
+          
             <div className="columns-4 gap-4 space-y-4 pb-32">
               {
                 nfts.map((nft, i) => (
                   <div key={i} className="shadow rounded-xl overflow-hidden break-inside-avoid">
-                    <img src={nft.image} className="rounded" />
-                    <div className="p-4 bg-black">
-                      <p className="text-xl font-bold text-white">{nft.price} MATIC</p>
+                    <img src={nft.image} className="rounded-t-xl" />
+                    <div className="p-4 bg-gradient-to-r from-pink-900 to-violet-900">
+                      <p className="text-white"><b>{nft.price}</b> MATIC</p>
                     </div>
                   </div>
                 ))

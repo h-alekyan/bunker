@@ -4,10 +4,14 @@ import Link from "next/link"
 
 function MyApp({ Component, pageProps }) {
   return(
-    <body className="bg-neutral-900">
+    <body className="bg-neutral-900 bg-gradient-to-b from-neutral-900 to-pink-900/30">
     <div className="">
       <nav className="p-6 mb-40">
-        <p className="text-4xl font-bold text-zinc-50 flex justify-center">bunker</p>
+      <div class="text-2xl flex font-light justify-center">
+            <span class="font-mono bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+              bunker
+            </span>
+          </div>
         <div className="flex mt-4 justify-center">
           <Link href="/">
             <a className="mr-6 text-zinc-50">
@@ -25,7 +29,7 @@ function MyApp({ Component, pageProps }) {
             </a>
           </Link>
           <Link href="/dashboard">
-            <a className="mr-6 text-zinc-50">
+            <a className="text-zinc-50">
               Dashboard
             </a>
           </Link>

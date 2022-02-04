@@ -48,21 +48,28 @@ export default function Vault(){
     }
     if(loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets owned</h1>)
     return (
+      <div>
+        <div class="mb-10 text-2xl flex font-light justify-center">
+            <span class="font-mono bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+              vault
+            </span>
+          </div>
         <div className="flex justify-center">
           <div className="p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+            <div className="columns-3 gap-4 space-y-4 pb-32">
               {
                 nfts.map((nft, i) => (
-                  <div key={i} className="border shadow rounded-xl overflow-hidden">
-                    <img src={nft.image} className="rounded" />
-                    <div className="p-4 bg-black">
-                      <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+                  <div key={i} className="shadow rounded-xl overflow-hidden break-inside-avoid">
+                    <img src={nft.image} className="rounded-t" />
+                    <div className="p-4 bg-gradient-to-r from-pink-900 to-violet-900">
+                      <p className="text-white">Price - <b>{nft.price}</b> MATIC</p>
                     </div>
                   </div>
                 ))
               }
             </div>
           </div>
+        </div>
         </div>
       )
 

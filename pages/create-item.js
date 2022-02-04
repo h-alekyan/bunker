@@ -81,27 +81,46 @@ export default function CreateItem(){
         router.push('/')
     }
     return(
+        <div>
+            <div class="mb-10 text-2xl flex font-light justify-center">
+            <span class="font-mono bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+              sell your artwork
+            </span>
+          </div>
+        
         <div className="flex justify-center">
             <div className='w-1/2 flex flex-col pb-12'>
                 <input 
                 placeholder="Asset Name"
-                className="mt-8 border rounded p-4"
+                className="bg-transparent mt-8 border rounded p-4"
                 onChange={e => updateFormInput({...formInput, name: e.target.value})} 
                 />
                 <textarea 
                 placeholder="Asset Description"
-                className="mt-2 border rounded p-4"
+                className="bg-transparent mt-2 border rounded p-4"
                 onChange={e => updateFormInput({...formInput, description: e.target.value})} 
                 />
                 <input 
                 placeholder="Asset Price in Matic"
-                className="mt-2 border rounded p-4"
+                className="bg-transparent mt-2 border rounded p-4"
                 onChange={e => updateFormInput({...formInput, price: e.target.value})} 
                 />
                 <input
                 type="file"
                 name="Asset"
-                className="my-4"
+                className="form-control
+                block
+                w-full
+                px-2
+                py-1.5
+                text-xl
+                bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                my-4 text-zinc-100 bg-transparent"
                 onChange={onChange}
                 />
                 {
@@ -109,11 +128,12 @@ export default function CreateItem(){
                         <img className="rounded mt-4" width="350" src={fileUrl} />
                     )
                 }
-                <button onClick={createMarket} className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">
+                <button onClick={createMarket} className="font-bold mt-4 bg-gradient-to-r from-pink-900 to-violet-900 text-white rounded p-4 shadow-lg">
                     Create Digital Asset
                 </button>
 
             </div>
+        </div>
         </div>
     )
 }
