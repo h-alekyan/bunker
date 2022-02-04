@@ -49,7 +49,7 @@ npm run dev
 
 and the marketplace should be running normally. Use one of the wallets provided by hardhat to test things out (i.e., uploading NFTs, buying, selling, etc).
 
-## Deploying on Polygon Mainnet
+## Deploying on the Polygon Mainnet
 
 The deployment configurations are given both for the testnet and the mainnet. Just place your URL from Infura into the hardhat.config.js file.
 
