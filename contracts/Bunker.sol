@@ -13,9 +13,11 @@ contract Bunker is ReentrancyGuard {
     using Counters for Counters.Counter;
     Counters.Counter private _itemIds;
     Counters.Counter private _itemsSold;
+    Counters.Counter private _members;
+    address[] public addresses;
 
     address payable owner;
-    uint listingPrice = 0.025 ether;
+    uint listingPrice = 5 ether;
 
     constructor() {
         owner = payable(msg.sender);
@@ -31,6 +33,9 @@ contract Bunker is ReentrancyGuard {
         bool sold;
     }
 
+    mapping(address => uint) public balances;
+
+
     mapping(uint256 => MarketItem) private idToMarketItem;
 
     event MarketItemCreated (
@@ -45,6 +50,10 @@ contract Bunker is ReentrancyGuard {
 
     function getListingPrice() public view returns (uint256) {
         return listingPrice;
+    }
+
+    function getMemberBalance() public view returns (uint) {
+        return balances[msg.sender];
     }
 
     function createMarketItem(
@@ -88,7 +97,14 @@ contract Bunker is ReentrancyGuard {
         idToMarketItem[itemId].owner = payable(msg.sender);
         idToMarketItem[itemId].sold = true;
         _itemsSold.increment();
-        payable(owner).transfer(listingPrice);
+        _members.increment();
+        uint memberCount = _members.current();
+        addresses.push(msg.sender);
+        uint memberReward = listingPrice / memberCount;
+        for (uint i = 0; i < memberCount; i++){
+            balances[addresses[i]] += memberReward;
+        }
+        //payable(owner).transfer(listingPrice);
 
     }
     // Fetching all unsold NFTs to be displayed in the market
@@ -158,5 +174,13 @@ contract Bunker is ReentrancyGuard {
         }
         return items;
     }
+
+    function withdrawFunds(uint amount) public returns(bool success) {   
+        require(balances[msg.sender] >= amount);
+        balances[msg.sender] -= amount;         
+        payable(msg.sender).transfer(amount);            
+        return true;
+}
+
 
 }

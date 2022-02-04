@@ -53,6 +53,8 @@ export default function CreateItem(){
         }  
       }
 
+
+
     async function createSale(url){
         const web3Modal = new Web3Modal()
         const connection = await web3Modal.connect()
@@ -71,6 +73,7 @@ export default function CreateItem(){
 
         contract = new ethers.Contract(bunkeraddress, Bunker.abi, signer)
         let listingPrice = await contract.getListingPrice()
+
 
         listingPrice = listingPrice.toString()
 
